@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sridhar Jagadesan — Portfolio</title>
+  <meta name="description" content="Portfolio of Sridhar Jagadesan, Robotics & Automation Engineer specializing in autonomous systems, manufacturing process optimization, and ROS2-based robotics. Projects, experience, and contact." />
+  <meta name="keywords" content="Sridhar Jagadesan, Robotics Engineer, Automation Engineer, ROS2, SLAM, Autonomous Mobile Robot, Drexel University, Manufacturing Engineer" />
+  <meta name="author" content="Sridhar Jagadesan" />
+  <meta name="theme-color" content="#0f1117" />
+  <link rel="canonical" href="https://sridharjagadesan.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sridhar Jagadesan — Portfolio" />
+  <meta property="og:description" content="Robotics & Automation Engineer specializing in autonomous systems, manufacturing process optimization, and ROS2-based robotics." />
+  <meta property="og:url" content="https://sridharjagadesan.com/" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sridhar Jagadesan — Portfolio" />
+  <meta name="twitter:description" content="Robotics & Automation Engineer specializing in autonomous systems, manufacturing process optimization, and ROS2-based robotics." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#home" class="logo">Sridhar Jagadesan</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="assets/resume.pdf" class="btn-small" download>Resume</a></li>
+        <li>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero container">
+      <p class="eyebrow">Hi, I'm</p>
+      <h1>Sridhar Jagadesan</h1>
+      <p class="hero-tagline">Robotics & Automation Engineer building autonomous systems and driving manufacturing efficiency through data and automation.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </section>
+
+    <section id="about" class="section container">
+      <h2>About Me</h2>
+      <p>
+        Robotics & Automation Engineer with early-career experience in manufacturing systems, process optimization,
+        and robotic system design. Currently pursuing a Master of Science in Robotics and Autonomy at Drexel University,
+        after a Bachelor of Engineering in Robotics and Automation from PSG College of Technology. I've improved
+        production efficiency through real-time monitoring solutions in regulated environments and contributed to
+        the design and navigation of autonomous mobile robots — skilled in Lean practices, OEE improvement, and
+        automation tools like ROS2. Eager to apply robotics and automation expertise to drive efficiency and
+        innovation in engineering roles.
+      </p>
+    </section>
+
+    <section id="skills" class="section container">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>Python</li>
+        <li>C / MATLAB</li>
+        <li>ROS / ROS2</li>
+        <li>SolidWorks / AutoCAD</li>
+        <li>SLAM & Path Planning</li>
+        <li>OpenCV</li>
+        <li>Siemens S7 PLC / TIA Portal</li>
+        <li>Lean Manufacturing / OEE</li>
+        <li>Process Validation (IQ/OQ/PQ)</li>
+        <li>Arduino / Embedded Systems</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="section container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <h3>Autonomous Mobile Robot (AMR)</h3>
+          <p>Designed the mechanical structure of an industrial AMR in SolidWorks and developed ROS2-based navigation by integrating SLAM algorithms; optimized the towing/tugging mechanism for smoother operation and higher load capacity. Built at Pricol Industries.</p>
+          <div class="project-tags">
+            <span class="tag">SolidWorks</span>
+            <span class="tag">ROS2</span>
+            <span class="tag">SLAM</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-disabled">Demo</a>
+            <a href="#" class="link-disabled">Repo</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Toilet Cleaning Robot</h3>
+          <p>Final year project (lead) — designed and developed an autonomous robotic system using sensor-based navigation and BLDC motor control, with full mechanical design in SolidWorks and embedded systems for real-time motion control.</p>
+          <div class="project-tags">
+            <span class="tag">SolidWorks</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">Sensor Navigation</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-disabled">Demo</a>
+            <a href="#" class="link-disabled">Repo</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>RC Electric Vehicle for Sustainable Weeding</h3>
+          <p>Project lead — designed and simulated a battery-powered RC EV for eco-friendly agricultural weed control, including a feasibility study on sustainable farming alternatives.</p>
+          <div class="project-tags">
+            <span class="tag">EV Design</span>
+            <span class="tag">Simulation</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-disabled">Demo</a>
+            <a href="#" class="link-disabled">Repo</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Motion Planning Research — ICAARS 2022</h3>
+          <p>Compared traditional and ML-based path planning algorithms and identified optimal collision avoidance techniques across platforms; presented at ICAARS 2022.</p>
+          <div class="project-tags">
+            <span class="tag">Path Planning</span>
+            <span class="tag">ML</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-disabled">Demo</a>
+            <a href="#" class="link-disabled">Repo</a>
+          </div>
+        </article>
+
+        <article class="project-card project-card--placeholder">
+          <h3>Marathon Gym Tracker</h3>
+          <p>Details coming soon — this project is still being finalized.</p>
+          <div class="project-tags">
+            <span class="tag">TBD</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-disabled">Demo</a>
+            <a href="#" class="link-disabled">Repo</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="section container">
+      <h2>Experience</h2>
+
+      <article class="experience-item">
+        <h3>Engineering Co-op — PCI Pharma Services</h3>
+        <p class="experience-meta">Philadelphia, PA · Sept 2025 – Mar 2026</p>
+        <ul>
+          <li>Analyzed production data using MES/OEE tools to identify downtime drivers, improving line efficiency by 10%</li>
+          <li>Deployed Raven.ai system enabling real-time OEE monitoring, reducing manual tracking effort by 8 hours/week</li>
+          <li>Supported process validation (IQ/OQ/PQ) and new product introduction in a cGMP-regulated environment</li>
+          <li>Conducted root cause analysis (RCA) to resolve bottlenecks and improve throughput</li>
+          <li>Implemented Lean and 5S methodologies, improving workspace efficiency and reducing cycle time</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <h3>Mechanical Engineering Intern — Pricol Industries Ltd</h3>
+        <p class="experience-meta">India · Jan 2024 – Apr 2024</p>
+        <ul>
+          <li>Designed mechanical structure of an Autonomous Mobile Robot (AMR) using SolidWorks</li>
+          <li>Developed ROS2-based navigation for industrial deployment by integrating SLAM algorithms</li>
+          <li>Optimized towing and tugging mechanism, resulting in smoother operations and higher load capacities</li>
+        </ul>
+      </article>
+
+      <h2 class="education-heading">Education</h2>
+      <article class="experience-item">
+        <h3>Drexel University</h3>
+        <p class="experience-meta">MS in Robotics and Autonomy · Sep 2024 – June 2026</p>
+        <p>College of Engineering Dean's Scholarship · CGPA 3.56</p>
+      </article>
+
+      <article class="experience-item">
+        <h3>PSG College of Technology</h3>
+        <p class="experience-meta">BE in Robotics and Automation · Oct 2020 – June 2024</p>
+        <p>CGPA 7.98/10</p>
+      </article>
+    </section>
+
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <p>The best way to reach me:</p>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:sridharjagadesan@gmail.com">sridharjagadesan@gmail.com</a></li>
+        <li>Phone: +1 (445) 208-0887</li>
+        <li>GitHub: <a href="https://github.com/Dharrr10" target="_blank" rel="noopener">github.com/Dharrr10</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/sridhar-jagadesan" target="_blank" rel="noopener">linkedin.com/in/sridhar-jagadesan</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Sridhar Jagadesan. Built with HTML, CSS &amp; JS.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
