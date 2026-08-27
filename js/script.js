@@ -56,3 +56,49 @@ themeToggle.addEventListener("click", () => {
   document.documentElement.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
 });
+
+const heroRobot = document.querySelector(".hero-robot");
+const heroSection = document.getElementById("home");
+
+if (heroRobot && heroSection && !prefersReducedMotion) {
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  const pupilLeft = document.getElementById("pupil-left");
+  const pupilRight = document.getElementById("pupil-right");
+  const eyeBaseLeft = { cx: 88, cy: 68 };
+  const eyeBaseRight = { cx: 112, cy: 68 };
+  const maxPupilOffset = 2.5;
+
+  const updateEyes = (clientX, clientY) => {
+    const rect = heroRobot.getBoundingClientRect();
+    const pivotX = rect.left + rect.width / 2;
+    const pivotY = rect.top + rect.height * 0.28;
+    const dx = clamp((clientX - pivotX) / 260, -1, 1) * maxPupilOffset;
+    const dy = clamp((clientY - pivotY) / 260, -1, 1) * maxPupilOffset;
+
+    pupilLeft.setAttribute("cx", eyeBaseLeft.cx + dx);
+    pupilLeft.setAttribute("cy", eyeBaseLeft.cy + dy);
+    pupilRight.setAttribute("cx", eyeBaseRight.cx + dx);
+    pupilRight.setAttribute("cy", eyeBaseRight.cy + dy);
+  };
+
+  heroSection.addEventListener("mousemove", (e) => updateEyes(e.clientX, e.clientY));
+  heroSection.addEventListener("mouseleave", () => {
+    pupilLeft.setAttribute("cx", eyeBaseLeft.cx);
+    pupilLeft.setAttribute("cy", eyeBaseLeft.cy);
+    pupilRight.setAttribute("cx", eyeBaseRight.cx);
+    pupilRight.setAttribute("cy", eyeBaseRight.cy);
+  });
+
+  const playWave = () => {
+    heroRobot.classList.remove("is-waving");
+    // Force reflow so the animation restarts if clicked again quickly.
+    void heroRobot.offsetWidth;
+    heroRobot.classList.add("is-waving");
+  };
+
+  heroRobot.addEventListener("click", playWave);
+  heroRobot.addEventListener("touchstart", playWave, { passive: true });
+
+  const waveArm = heroRobot.querySelector(".robot-arm-right");
+  waveArm.addEventListener("animationend", () => heroRobot.classList.remove("is-waving"));
+}

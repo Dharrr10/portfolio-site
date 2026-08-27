@@ -63,24 +63,42 @@
 
   <main>
     <section id="home" class="hero container">
-      <div class="hero-arm" aria-hidden="true">
-        <svg viewBox="0 0 200 240" width="140" height="168" focusable="false">
-          <line x1="100" y1="230" x2="100" y2="150" class="arm-guide" stroke-dasharray="4 6"></line>
-          <line x1="100" y1="150" x2="100" y2="90" class="arm-guide" stroke-dasharray="4 6"></line>
-          <rect x="60" y="222" width="80" height="14" rx="4" class="arm-base"></rect>
-          <circle cx="100" cy="222" r="10" class="arm-joint"></circle>
-          <g class="arm-upper">
-            <rect x="93" y="150" width="14" height="72" rx="6" class="arm-bone"></rect>
-            <circle cx="100" cy="150" r="8" class="arm-joint"></circle>
-            <g class="arm-fore">
-              <rect x="94" y="90" width="12" height="60" rx="5" class="arm-bone"></rect>
-              <circle cx="100" cy="90" r="6" class="arm-joint"></circle>
-              <g class="arm-gripper">
-                <path d="M100 90 L84 66" class="arm-claw"></path>
-                <path d="M100 90 L116 66" class="arm-claw"></path>
-                <circle cx="100" cy="90" r="3" class="arm-joint arm-joint--small"></circle>
-              </g>
+      <div class="hero-robot" aria-hidden="true">
+        <svg viewBox="0 0 200 250" width="140" height="175" focusable="false">
+          <g class="robot-body">
+            <rect x="78" y="188" width="16" height="45" rx="8" class="robot-limb"></rect>
+            <rect x="106" y="188" width="16" height="45" rx="8" class="robot-limb"></rect>
+            <ellipse cx="86" cy="235" rx="12" ry="6" class="robot-foot"></ellipse>
+            <ellipse cx="114" cy="235" rx="12" ry="6" class="robot-foot"></ellipse>
+
+            <g class="robot-arm-left">
+              <rect x="52" y="118" width="14" height="55" rx="7" class="robot-limb"></rect>
+              <circle cx="59" cy="173" r="8" class="robot-hand"></circle>
             </g>
+            <g class="robot-arm-right">
+              <rect x="134" y="118" width="14" height="55" rx="7" class="robot-limb"></rect>
+              <circle cx="141" cy="173" r="8" class="robot-hand"></circle>
+            </g>
+
+            <rect x="65" y="108" width="70" height="80" rx="16" class="robot-torso"></rect>
+            <circle cx="100" cy="140" r="8" class="robot-chest-light"></circle>
+
+            <rect x="94" y="98" width="12" height="10" class="robot-neck"></rect>
+
+            <circle cx="100" cy="70" r="30" class="robot-head-shape"></circle>
+            <line x1="100" y1="40" x2="100" y2="26" class="robot-antenna"></line>
+            <circle cx="100" cy="22" r="5" class="robot-antenna-tip"></circle>
+
+            <g class="robot-eye-l">
+              <circle cx="88" cy="68" r="8" class="robot-eye"></circle>
+              <circle cx="88" cy="68" r="3.5" class="robot-pupil" id="pupil-left"></circle>
+            </g>
+            <g class="robot-eye-r">
+              <circle cx="112" cy="68" r="8" class="robot-eye"></circle>
+              <circle cx="112" cy="68" r="3.5" class="robot-pupil" id="pupil-right"></circle>
+            </g>
+
+            <rect x="90" y="84" width="20" height="4" rx="2" class="robot-mouth"></rect>
           </g>
         </svg>
       </div>

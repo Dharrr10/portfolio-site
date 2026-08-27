@@ -190,85 +190,131 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   text-align: center;
 }
 
-/* Robotic arm illustration */
-.hero-arm {
+/* Humanoid robot illustration */
+.hero-robot {
   display: flex;
   justify-content: center;
   margin: 0 auto 1rem;
   width: 140px;
+  cursor: pointer;
   filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 35%, transparent));
 }
 
-.hero-arm svg {
+.hero-robot svg {
   width: 100%;
   height: auto;
   overflow: visible;
 }
 
-.arm-base,
-.arm-bone {
+.robot-limb,
+.robot-torso {
   fill: color-mix(in srgb, var(--text-muted) 35%, var(--bg-elevated));
   stroke: var(--accent);
   stroke-width: 1.5;
 }
 
-.arm-joint {
+.robot-head-shape {
+  fill: color-mix(in srgb, var(--text-muted) 20%, var(--bg-elevated));
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.robot-hand,
+.robot-foot {
+  fill: color-mix(in srgb, var(--text-muted) 45%, var(--bg-elevated));
+  stroke: var(--accent);
+  stroke-width: 1.2;
+}
+
+.robot-neck {
+  fill: color-mix(in srgb, var(--text-muted) 45%, var(--bg-elevated));
+}
+
+.robot-chest-light,
+.robot-antenna-tip {
   fill: var(--accent);
 }
 
-.arm-joint--small {
+.robot-antenna {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.robot-eye {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.robot-pupil {
+  fill: var(--accent);
+}
+
+.robot-mouth {
   fill: var(--accent-hover);
 }
 
-.arm-claw {
-  stroke: var(--accent);
-  stroke-width: 4;
-  stroke-linecap: round;
-  fill: none;
-}
-
-.arm-guide {
-  stroke: var(--border);
-  stroke-width: 1;
-}
-
-.arm-upper {
+.robot-body {
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: armSwayUpper 6s ease-in-out infinite;
+  animation: robotBob 3s ease-in-out infinite;
 }
 
-.arm-fore {
+.robot-arm-left {
   transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: armSwayFore 5s ease-in-out infinite;
-  animation-delay: -1.2s;
+  transform-origin: 50% 0%;
+  animation: robotArmSwayL 4s ease-in-out infinite;
 }
 
-.arm-gripper {
+.robot-arm-right {
   transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: armSwayGripper 4s ease-in-out infinite;
-  animation-delay: -0.6s;
+  transform-origin: 50% 0%;
+  animation: robotArmSwayR 4.5s ease-in-out infinite;
 }
 
-@keyframes armSwayUpper {
-  0%, 100% { transform: rotate(-6deg); }
-  50% { transform: rotate(6deg); }
+.robot-eye-l,
+.robot-eye-r {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: robotBlink 6s ease-in-out infinite;
 }
 
-@keyframes armSwayFore {
-  0%, 100% { transform: rotate(8deg); }
-  50% { transform: rotate(-8deg); }
+@keyframes robotBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
-@keyframes armSwayGripper {
-  0%, 100% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
+@keyframes robotArmSwayL {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@keyframes robotArmSwayR {
+  0%, 100% { transform: rotate(4deg); }
+  50% { transform: rotate(-4deg); }
+}
+
+@keyframes robotBlink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+.hero-robot.is-waving .robot-arm-right {
+  animation: robotWave 0.9s ease-in-out;
+}
+
+@keyframes robotWave {
+  0% { transform: rotate(4deg); }
+  20% { transform: rotate(-120deg); }
+  35% { transform: rotate(-95deg); }
+  50% { transform: rotate(-130deg); }
+  65% { transform: rotate(-95deg); }
+  80% { transform: rotate(-120deg); }
+  100% { transform: rotate(4deg); }
 }
 
 @media (max-width: 480px) {
-  .hero-arm {
+  .hero-robot {
     width: 100px;
   }
 }
@@ -584,9 +630,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
     transition: none;
   }
 
-  .arm-upper,
-  .arm-fore,
-  .arm-gripper {
+  .robot-body,
+  .robot-arm-left,
+  .robot-arm-right,
+  .robot-eye-l,
+  .robot-eye-r {
     animation: none;
   }
 }
