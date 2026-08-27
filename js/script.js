@@ -64,14 +64,14 @@ if (heroRobot && heroSection && !prefersReducedMotion) {
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
   const pupilLeft = document.getElementById("pupil-left");
   const pupilRight = document.getElementById("pupil-right");
-  const eyeBaseLeft = { cx: 88, cy: 68 };
-  const eyeBaseRight = { cx: 112, cy: 68 };
-  const maxPupilOffset = 2.5;
+  const eyeBaseLeft = { cx: 90, cy: 80 };
+  const eyeBaseRight = { cx: 110, cy: 80 };
+  const maxPupilOffset = 3;
 
   const updateEyes = (clientX, clientY) => {
     const rect = heroRobot.getBoundingClientRect();
     const pivotX = rect.left + rect.width / 2;
-    const pivotY = rect.top + rect.height * 0.28;
+    const pivotY = rect.top + rect.height * 0.32;
     const dx = clamp((clientX - pivotX) / 260, -1, 1) * maxPupilOffset;
     const dy = clamp((clientY - pivotY) / 260, -1, 1) * maxPupilOffset;
 

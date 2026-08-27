@@ -198,6 +198,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   width: 140px;
   cursor: pointer;
   filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 35%, transparent));
+  animation: robotPatrol 7s ease-in-out infinite;
 }
 
 .hero-robot svg {
@@ -207,7 +208,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 .robot-limb,
-.robot-torso {
+.robot-torso,
+.robot-undercarriage {
   fill: color-mix(in srgb, var(--text-muted) 35%, var(--bg-elevated));
   stroke: var(--accent);
   stroke-width: 1.5;
@@ -220,19 +222,36 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 .robot-hand,
-.robot-foot {
+.robot-wheel {
   fill: color-mix(in srgb, var(--text-muted) 45%, var(--bg-elevated));
   stroke: var(--accent);
   stroke-width: 1.2;
+}
+
+.robot-wheel-spoke {
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.robot-shadow {
+  fill: color-mix(in srgb, var(--text) 12%, transparent);
 }
 
 .robot-neck {
   fill: color-mix(in srgb, var(--text-muted) 45%, var(--bg-elevated));
 }
 
+.robot-visor {
+  fill: color-mix(in srgb, var(--text) 75%, var(--bg));
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
 .robot-chest-light,
 .robot-antenna-tip {
   fill: var(--accent);
+  animation: robotPulse 2.4s ease-in-out infinite;
 }
 
 .robot-antenna {
@@ -240,17 +259,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   stroke-width: 2;
 }
 
-.robot-eye {
-  fill: var(--bg);
-  stroke: var(--accent);
-  stroke-width: 1.5;
-}
-
 .robot-pupil {
-  fill: var(--accent);
-}
-
-.robot-mouth {
   fill: var(--accent-hover);
 }
 
@@ -279,6 +288,18 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   animation: robotBlink 6s ease-in-out infinite;
 }
 
+.robot-wheel-l,
+.robot-wheel-r {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: robotWheelSpin 1.4s linear infinite;
+}
+
+@keyframes robotPatrol {
+  0%, 100% { transform: translateX(-56px); }
+  50% { transform: translateX(56px); }
+}
+
 @keyframes robotBob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
@@ -299,6 +320,16 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   95% { transform: scaleY(0.1); }
 }
 
+@keyframes robotPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes robotWheelSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .hero-robot.is-waving .robot-arm-right {
   animation: robotWave 0.9s ease-in-out;
 }
@@ -316,7 +347,13 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 @media (max-width: 480px) {
   .hero-robot {
     width: 100px;
+    animation-name: robotPatrolSmall;
   }
+}
+
+@keyframes robotPatrolSmall {
+  0%, 100% { transform: translateX(-28px); }
+  50% { transform: translateX(28px); }
 }
 
 .eyebrow {
@@ -630,11 +667,16 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
     transition: none;
   }
 
+  .hero-robot,
   .robot-body,
   .robot-arm-left,
   .robot-arm-right,
   .robot-eye-l,
-  .robot-eye-r {
+  .robot-eye-r,
+  .robot-wheel-l,
+  .robot-wheel-r,
+  .robot-chest-light,
+  .robot-antenna-tip {
     animation: none;
   }
 }
