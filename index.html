@@ -63,6 +63,27 @@
 
   <main>
     <section id="home" class="hero container">
+      <div class="hero-arm" aria-hidden="true">
+        <svg viewBox="0 0 200 240" focusable="false">
+          <line x1="100" y1="230" x2="100" y2="150" class="arm-guide" stroke-dasharray="4 6"></line>
+          <line x1="100" y1="150" x2="100" y2="90" class="arm-guide" stroke-dasharray="4 6"></line>
+          <rect x="60" y="222" width="80" height="14" rx="4" class="arm-base"></rect>
+          <circle cx="100" cy="222" r="10" class="arm-joint"></circle>
+          <g class="arm-upper">
+            <rect x="93" y="150" width="14" height="72" rx="6" class="arm-bone"></rect>
+            <circle cx="100" cy="150" r="8" class="arm-joint"></circle>
+            <g class="arm-fore">
+              <rect x="94" y="90" width="12" height="60" rx="5" class="arm-bone"></rect>
+              <circle cx="100" cy="90" r="6" class="arm-joint"></circle>
+              <g class="arm-gripper">
+                <path d="M100 90 L84 66" class="arm-claw"></path>
+                <path d="M100 90 L116 66" class="arm-claw"></path>
+                <circle cx="100" cy="90" r="3" class="arm-joint arm-joint--small"></circle>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
       <p class="eyebrow">Hi, I'm</p>
       <h1>Sridhar Jagadesan</h1>
       <p class="hero-tagline">Robotics & Automation Engineer building autonomous systems and driving manufacturing efficiency through data and automation.</p>
