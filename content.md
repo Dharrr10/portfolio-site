@@ -9,7 +9,7 @@ Fill in the sections below with your real text. Leave a field blank if you don't
 
 ## About
 
-Robotics & Automation Engineer with early-career experience in manufacturing systems, process optimization, and robotic system design. Currently pursuing a Master of Science in Robotics and Autonomy at Drexel University, after a Bachelor of Engineering in Robotics and Automation from PSG College of Technology. Improved production efficiency through real-time monitoring solutions in regulated environments and contributed to the design and navigation of autonomous mobile robots — skilled in Lean practices, OEE improvement, and automation tools like ROS2. Eager to apply robotics and automation expertise to drive efficiency and innovation in engineering roles.
+Robotics & Automation Engineer with early-career experience in manufacturing systems, process optimization, and robotic system design. A recent Master's graduate in Robotics and Autonomy at Drexel University, after a Bachelor of Engineering in Robotics and Automation from PSG College of Technology. Improved production efficiency through real-time monitoring solutions in regulated environments and contributed to the design and navigation of autonomous mobile robots — skilled in Lean practices, OEE improvement, and automation tools like ROS2. Eager to apply robotics and automation expertise to drive efficiency and innovation in engineering roles.
 
 ## Skills
 
