@@ -24,7 +24,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <script>
     (function () {
@@ -44,11 +44,14 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li class="nav-pill-group" id="nav-pill-group">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+          <span class="nav-pill-highlight" id="nav-pill-highlight" aria-hidden="true"></span>
+        </li>
         <li><a href="assets/resume.pdf" class="btn-small" download>Resume</a></li>
         <li>
           <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
@@ -115,7 +118,7 @@
       </div>
       <p class="eyebrow">Hi, I'm</p>
       <h1>Sridhar Jagadesan</h1>
-      <p class="hero-tagline">Robotics & Automation Engineer building autonomous systems and driving manufacturing efficiency through data and automation.</p>
+      <p class="hero-tagline">Robotics & Automation Engineer building <em class="accent-word">autonomous</em> systems and driving manufacturing efficiency through data and automation.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="#contact" class="btn btn-outline">Get in Touch</a>

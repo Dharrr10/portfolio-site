@@ -135,32 +135,41 @@ body {
 
 .nav-links a:hover { color: var(--text); }
 
-.nav-links a:not(.btn-small) {
-  position: relative;
-  padding-bottom: 2px;
-}
-
-.nav-links a:not(.btn-small)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 100%;
-  height: 2px;
-  background: var(--gradient);
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease;
-}
-
-.nav-links a:not(.btn-small):hover::after,
-.nav-links a:not(.btn-small).active::after {
-  transform: scaleX(1);
-}
-
 .nav-links a.active {
   color: var(--text);
+}
+
+.nav-pill-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem;
+}
+
+.nav-pill-group a {
+  position: relative;
+  z-index: 2;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+}
+
+.nav-pill-highlight {
+  position: absolute;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  left: 0.3rem;
+  width: 0;
+  border-radius: 999px;
+  background: var(--gradient);
+  opacity: 0.16;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: left 0.3s cubic-bezier(0.65, 0, 0.35, 1), width 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .btn-small {
@@ -435,6 +444,12 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   animation: heroFadeUp 0.6s ease-out 0.3s forwards;
 }
 
+.accent-word {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-style: italic;
+  color: var(--text);
+}
+
 .hero-actions {
   display: flex;
   gap: 1rem;
@@ -530,20 +545,31 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 /* Projects */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+  display: block;
+  position: relative;
 }
 
 .project-card {
-  position: relative;
+  position: sticky;
+  top: 96px;
   overflow: hidden;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
+  border-radius: calc(var(--radius) * 1.6);
+  padding: 2.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
+
+.project-card:nth-child(1) { z-index: 1; }
+.project-card:nth-child(2) { z-index: 2; }
+.project-card:nth-child(3) { z-index: 3; }
+.project-card:nth-child(4) { z-index: 4; }
+.project-card:nth-child(5) { z-index: 5; }
+.project-card:nth-child(6) { z-index: 6; }
+.project-card:nth-child(7) { z-index: 7; }
+.project-card:nth-child(8) { z-index: 8; }
 
 .project-card::before {
   content: "";
@@ -561,7 +587,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 .project-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.4);
 }
 
 .project-card:hover::before {
@@ -575,7 +601,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 .project-card h3 {
   font-family: var(--font-display);
   margin: 0 0 0.5rem;
-  font-size: var(--fs-lg);
+  font-size: var(--fs-2xl);
 }
 
 .project-card p {
@@ -725,6 +751,20 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   }
 
   .nav-links.open { display: flex; }
+
+  .nav-pill-group {
+    flex-direction: column;
+    align-items: flex-start;
+    background: none;
+    border: none;
+    padding: 0;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .nav-pill-highlight {
+    display: none;
+  }
 }
 
 /* Small-screen tightening */
@@ -744,6 +784,15 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
   .nav {
     padding: 0.85rem 1.25rem;
+  }
+
+  .project-card {
+    top: 76px;
+    padding: 1.5rem;
+  }
+
+  .project-card h3 {
+    font-size: var(--fs-lg);
   }
 }
 
@@ -770,7 +819,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   .project-card::before,
   .btn,
   .nav-links a,
-  .nav-links a::after {
+  .nav-links a::after,
+  .nav-pill-highlight {
     transition: none;
   }
 

@@ -131,6 +131,38 @@ navLinks.querySelectorAll("a[href^='#']").forEach((link) => {
   sectionNavLinks.set(link.getAttribute("href").slice(1), link);
 });
 
+const pillGroup = document.getElementById("nav-pill-group");
+const pillHighlight = document.getElementById("nav-pill-highlight");
+let isPillHovering = false;
+
+const movePillTo = (link) => {
+  if (!pillGroup || !pillHighlight || !link) return;
+  const groupRect = pillGroup.getBoundingClientRect();
+  const linkRect = link.getBoundingClientRect();
+  pillHighlight.style.left = `${linkRect.left - groupRect.left}px`;
+  pillHighlight.style.width = `${linkRect.width}px`;
+};
+
+if (pillGroup && pillHighlight) {
+  pillGroup.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      isPillHovering = true;
+      movePillTo(link);
+    });
+  });
+
+  pillGroup.addEventListener("mouseleave", () => {
+    isPillHovering = false;
+    const activeLink = pillGroup.querySelector("a.active");
+    if (activeLink) movePillTo(activeLink);
+  });
+
+  window.addEventListener("resize", () => {
+    const activeLink = pillGroup.querySelector("a.active");
+    if (activeLink) movePillTo(activeLink);
+  });
+}
+
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -139,6 +171,7 @@ const sectionObserver = new IntersectionObserver(
       if (entry.isIntersecting) {
         sectionNavLinks.forEach((l) => l.classList.remove("active"));
         link.classList.add("active");
+        if (!isPillHovering) movePillTo(link);
       }
     });
   },
