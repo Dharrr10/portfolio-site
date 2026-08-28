@@ -39,7 +39,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 if (!prefersReducedMotion) {
   const revealTargets = document.querySelectorAll(
-    ".section > h2, .section-note, .project-card, .experience-item, .skills-list li, .contact-list"
+    ".section > h2, .section-note, .project-card, .experience-item, .skills-list li, .contact-list, .intro-meta, .intro-wordmark-wrap, .intro-bio"
   );
   revealTargets.forEach((el) => el.classList.add("reveal"));
 
