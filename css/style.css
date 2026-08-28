@@ -519,7 +519,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 .intro-badge {
   position: absolute;
-  top: 55%;
+  bottom: -8px;
   left: 50%;
   width: 150px;
   background: var(--bg-elevated);
@@ -529,7 +529,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   text-align: center;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
   transform-origin: top center;
-  transform: translate(-50%, -10%) rotate(-4deg);
+  transform: translate(-50%, 0) rotate(-4deg);
   animation: badgeSwing 4.5s ease-in-out infinite;
 }
 
@@ -557,8 +557,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 @keyframes badgeSwing {
-  0%, 100% { transform: translate(-50%, -10%) rotate(-4deg); }
-  50% { transform: translate(-50%, -10%) rotate(3deg); }
+  0%, 100% { transform: translate(-50%, 0) rotate(-4deg); }
+  50% { transform: translate(-50%, 0) rotate(3deg); }
 }
 
 .intro-bio {
@@ -581,6 +581,13 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 .intro-bio strong {
   color: var(--text);
   font-weight: 700;
+}
+
+.intro-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 @media (max-width: 480px) {
