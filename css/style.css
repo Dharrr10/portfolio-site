@@ -501,7 +501,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 .intro-wordmark-wrap {
   position: relative;
-  margin-bottom: 2.5rem;
+  display: inline-block;
+  margin-bottom: 10rem;
 }
 
 .intro-wordmark {
@@ -519,13 +520,13 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 .intro-badge {
   position: absolute;
-  bottom: -8px;
-  left: 50%;
+  top: 100%;
+  left: 82%;
   width: 150px;
   background: var(--bg-elevated);
   border: 2px solid var(--border);
-  border-radius: 14px;
-  padding: 1.1rem 0.75rem;
+  border-radius: 8px;
+  padding: 1.2rem 0.8rem;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
   transform-origin: top center;
@@ -536,17 +537,36 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 .intro-badge::before {
   content: "";
   position: absolute;
-  top: -16px;
+  top: -17px;
   left: 50%;
   transform: translateX(-50%);
-  width: 16px;
-  height: 22px;
+  width: 20px;
+  height: 12px;
   border: 3px solid var(--text-muted);
   border-bottom: none;
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px 10px 0 0;
+  background: var(--bg-elevated);
+}
+
+.intro-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    color-mix(in srgb, white 22%, transparent) 42%,
+    transparent 58%
+  );
+  pointer-events: none;
 }
 
 .intro-badge span {
+  position: relative;
+  z-index: 1;
+  display: block;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--fs-sm);
