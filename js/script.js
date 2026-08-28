@@ -1,5 +1,17 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const scrollProgress = document.getElementById("scroll-progress");
+
+const updateScrollProgress = () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  scrollProgress.style.width = `${pct}%`;
+};
+
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+updateScrollProgress();
+
 const navToggle = document.getElementById("nav-toggle");
 const navLinks = document.getElementById("nav-links");
 
@@ -27,9 +39,19 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 if (!prefersReducedMotion) {
   const revealTargets = document.querySelectorAll(
-    ".section > h2, .section-note, .project-card, .experience-item, .skills-list, .contact-list"
+    ".section > h2, .section-note, .project-card, .experience-item, .skills-list li, .contact-list"
   );
   revealTargets.forEach((el) => el.classList.add("reveal"));
+
+  // Stagger elements that share a parent (skill pills, project cards) for a cascading reveal.
+  const staggerGroups = document.querySelectorAll(".skills-list, .projects-grid");
+  staggerGroups.forEach((group) => {
+    Array.from(group.children).forEach((child, index) => {
+      if (child.classList.contains("reveal")) {
+        child.style.transitionDelay = `${Math.min(index * 0.06, 0.4)}s`;
+      }
+    });
+  });
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -102,3 +124,25 @@ if (heroRobot && heroSection && !prefersReducedMotion) {
   const waveArm = heroRobot.querySelector(".robot-arm-right");
   waveArm.addEventListener("animationend", () => heroRobot.classList.remove("is-waving"));
 }
+
+const trackedSections = document.querySelectorAll("main section[id]");
+const sectionNavLinks = new Map();
+navLinks.querySelectorAll("a[href^='#']").forEach((link) => {
+  sectionNavLinks.set(link.getAttribute("href").slice(1), link);
+});
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const link = sectionNavLinks.get(entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        sectionNavLinks.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+      }
+    });
+  },
+  { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+);
+
+trackedSections.forEach((section) => sectionObserver.observe(section));

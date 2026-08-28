@@ -5,9 +5,12 @@
   --text-muted: #9a9fae;
   --accent: #6c8cff;
   --accent-hover: #8aa4ff;
+  --accent-2: #22d3c7;
   --border: #262a37;
   --radius: 10px;
   --max-width: 960px;
+  --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+  --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   /* Type scale (1.25 ratio) */
   --fs-xs: 0.8rem;
@@ -28,6 +31,7 @@
     --text-muted: #5b6070;
     --accent: #3b5bdb;
     --accent-hover: #2f4bc7;
+    --accent-2: #0d9488;
     --border: #e3e5eb;
   }
 }
@@ -40,6 +44,7 @@ html[data-theme="dark"] {
   --text-muted: #9a9fae;
   --accent: #6c8cff;
   --accent-hover: #8aa4ff;
+  --accent-2: #22d3c7;
   --border: #262a37;
 }
 
@@ -50,6 +55,7 @@ html[data-theme="light"] {
   --text-muted: #5b6070;
   --accent: #3b5bdb;
   --accent-hover: #2f4bc7;
+  --accent-2: #0d9488;
   --border: #e3e5eb;
 }
 
@@ -75,6 +81,17 @@ body {
   padding: 0 1.5rem;
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--gradient);
+  z-index: 200;
+  transition: width 0.1s linear;
+}
+
 /* Header / Nav */
 .site-header {
   position: sticky;
@@ -93,6 +110,7 @@ body {
 }
 
 .logo {
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--fs-md);
   color: var(--text);
@@ -116,6 +134,34 @@ body {
 }
 
 .nav-links a:hover { color: var(--text); }
+
+.nav-links a:not(.btn-small) {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-links a:not(.btn-small)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:not(.btn-small):hover::after,
+.nav-links a:not(.btn-small).active::after {
+  transform: scaleX(1);
+}
+
+.nav-links a.active {
+  color: var(--text);
+}
 
 .btn-small {
   color: var(--bg) !important;
@@ -198,7 +244,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   width: 140px;
   cursor: pointer;
   filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 35%, transparent));
-  animation: robotPatrol 7s ease-in-out infinite;
+  opacity: 0;
+  animation: robotPatrol 7s ease-in-out infinite, heroFadeIn 0.6s ease-out forwards;
 }
 
 .hero-robot svg {
@@ -347,7 +394,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 @media (max-width: 480px) {
   .hero-robot {
     width: 100px;
-    animation-name: robotPatrolSmall;
+    animation: robotPatrolSmall 7s ease-in-out infinite, heroFadeIn 0.6s ease-out forwards;
   }
 }
 
@@ -363,11 +410,20 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   letter-spacing: 0.08em;
   font-size: var(--fs-xs);
   margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: heroFadeUp 0.6s ease-out 0.1s forwards;
 }
 
 .hero h1 {
+  font-family: var(--font-display);
   font-size: var(--fs-hero);
   margin: 0 0 1rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  animation: heroFadeUp 0.6s ease-out 0.2s forwards;
 }
 
 .hero-tagline {
@@ -375,6 +431,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   max-width: 560px;
   margin: 0 auto 2rem;
   font-size: var(--fs-md);
+  opacity: 0;
+  animation: heroFadeUp 0.6s ease-out 0.3s forwards;
 }
 
 .hero-actions {
@@ -382,6 +440,18 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: heroFadeUp 0.6s ease-out 0.4s forwards;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .btn {
@@ -393,12 +463,16 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   transition: all 0.15s ease;
 }
 
+.btn:active {
+  transform: scale(0.97);
+}
+
 .btn-primary {
-  background: var(--accent);
+  background: var(--gradient);
   color: #fff;
 }
 
-.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:hover { filter: brightness(1.08); }
 
 .btn-outline {
   border: 1px solid var(--border);
@@ -409,11 +483,22 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 /* Sections */
 .section {
+  position: relative;
   padding: 3.5rem 1.5rem;
-  border-top: 1px solid var(--border);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border) 20%, var(--border) 80%, transparent);
 }
 
 .section h2 {
+  font-family: var(--font-display);
   font-size: var(--fs-xl);
   margin-bottom: 1.25rem;
 }
@@ -452,11 +537,25 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 .project-card {
   position: relative;
+  overflow: hidden;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
 }
 
 .project-card:hover {
@@ -465,13 +564,18 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
 }
 
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
 .project-card.has-link {
   cursor: pointer;
 }
 
 .project-card h3 {
+  font-family: var(--font-display);
   margin: 0 0 0.5rem;
-  font-size: var(--fs-md);
+  font-size: var(--fs-lg);
 }
 
 .project-card p {
@@ -544,6 +648,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 .experience-item h3 {
+  font-family: var(--font-display);
   margin: 0 0 0.25rem;
   font-size: var(--fs-md);
 }
@@ -662,8 +767,10 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   }
 
   .project-card,
+  .project-card::before,
   .btn,
-  .nav-links a {
+  .nav-links a,
+  .nav-links a::after {
     transition: none;
   }
 
@@ -678,5 +785,15 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   .robot-chest-light,
   .robot-antenna-tip {
     animation: none;
+  }
+
+  .hero-robot,
+  .eyebrow,
+  .hero h1,
+  .hero-tagline,
+  .hero-actions {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
